@@ -18,6 +18,9 @@ EduOutcome AI is an educational support platform designed to help faculty member
 - **User Authentication:** Provide login and registration interfaces.
 
 *Feature availability depends on the selected implementation and its current configuration.*
+## 🛠️ WEB PAGE
+<img width="1339" height="642" alt="image" src="https://github.com/user-attachments/assets/b9feb0f0-efa9-4958-94e3-d89508ec24d8" />
+
 
 ## 🛠️ Technology Stack
 
