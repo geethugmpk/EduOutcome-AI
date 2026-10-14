@@ -1,0 +1,10 @@
+<?php
+require __DIR__.'/config.php';function e($v){return htmlspecialchars((string)$v,ENT_QUOTES,'UTF-8');}
+$id=filter_input(INPUT_GET,'subject_id',FILTER_VALIDATE_INT)?:1;
+if($_SERVER['REQUEST_METHOD']==='POST'&&trim($_POST['title']??'')){
+ $stmt=$pdo->prepare("INSERT INTO research_papers(subject_id,title,authors,publication_year,doi_url,summary,verified) VALUES(?,?,?,?,?,?,?)");
+ $stmt->execute([$id,trim($_POST['title']),trim($_POST['authors']??''),($_POST['publication_year']??'')?:null,trim($_POST['doi_url']??''),trim($_POST['summary']??''),isset($_POST['verified'])?1:0]);
+ header('Location: research.php?subject_id='.$id);exit;
+}
+$stmt=$pdo->prepare("SELECT * FROM research_papers WHERE subject_id=? ORDER BY publication_year DESC");$stmt->execute([$id]);$papers=$stmt->fetchAll();
+?><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Research integration</title><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.php?subject_id=<?=$id?>">EduOutcome AI <small>PHP + MySQL</small></a></header><main class="standalone"><h1>Part 9 · Research Integration</h1><form method="post" class="card"><label>Paper title</label><input name="title" required><label>Authors</label><input name="authors"><label>Publication year</label><input name="publication_year" type="number" min="1900" max="2100"><label>DOI / source URL</label><input name="doi_url" type="url"><label>Summary and limitations</label><textarea name="summary"></textarea><label><input type="checkbox" name="verified" value="1" style="width:auto"> I verified this record</label><button class="primary">Save paper</button></form><section class="card"><h2>Saved papers</h2><?php foreach($papers as $p):?><article><h3><?=e($p['title'])?></h3><p><?=e($p['authors'])?> · <?=e($p['publication_year'])?> · <?=!empty($p['verified'])?'Verified by user':'Not yet verified'?></p><?php if($p['doi_url']):?><a href="<?=e($p['doi_url'])?>" target="_blank" rel="noopener">Open source</a><?php endif;?><p><?=e($p['summary'])?></p></article><hr><?php endforeach;?></section></main></body></html>

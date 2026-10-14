@@ -1,0 +1,9 @@
+EduOutcome AI login page
+
+1. Extract this ZIP.
+2. Open PowerShell in the extracted EduOutcome_AI_Flask_PHP_Project\flask_app folder.
+3. Run: python -m pip install -r requirements.txt
+4. Run: python app.py
+5. Open: http://127.0.0.1:5000
+
+The home page redirects unauthenticated visitors to /login. Choose “Create an account” to register the first account, then sign in. Passwords are stored as secure hashes. Existing database files are not included in this ZIP; back up your local smartcourse.db before replacing any files.

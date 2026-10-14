@@ -1,0 +1,11 @@
+<?php
+require __DIR__.'/config.php';
+function e($v){return htmlspecialchars((string)$v,ENT_QUOTES,'UTF-8');}
+$id=filter_input(INPUT_GET,'subject_id',FILTER_VALIDATE_INT) ?: 1;
+$stmt=$pdo->prepare("SELECT * FROM subjects WHERE id=?");$stmt->execute([$id]);$s=$stmt->fetch();if(!$s){exit('Subject not found.');}
+if($_SERVER['REQUEST_METHOD']==='POST'){
+ $stmt=$pdo->prepare("UPDATE subjects SET name=?,department=?,semester=?,outcomes=?,units=?,course_calendar=?,resources=? WHERE id=?");
+ $stmt->execute([$_POST['name'],$_POST['department'],$_POST['semester'],$_POST['outcomes'],$_POST['units'],$_POST['course_calendar'],$_POST['resources'],$id]);
+ header('Location: planning.php?subject_id='.$id.'&saved=1');exit;
+}
+?><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Course planning</title><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.php?subject_id=<?=$id?>">EduOutcome AI <small>PHP + MySQL</small></a></header><main class="standalone"><h1>Part 1 · Course Planning</h1><?php if(isset($_GET['saved'])) echo '<div class="notice">Course plan saved.</div>'; ?><form method="post" class="card"><div class="fields"><div><label>Subject</label><input name="name" value="<?=e($s['name'])?>"></div><div><label>Department</label><input name="department" value="<?=e($s['department'])?>"></div><div><label>Semester</label><input name="semester" value="<?=e($s['semester'])?>"></div><div class="full"><label>Course Outcomes</label><textarea name="outcomes"><?=e($s['outcomes'])?></textarea></div><div class="full"><label>Units</label><textarea name="units"><?=e($s['units'])?></textarea></div><div class="full"><label>Course calendar</label><textarea name="course_calendar"><?=e($s['course_calendar'])?></textarea></div><div class="full"><label>Resources</label><textarea name="resources"><?=e($s['resources'])?></textarea></div></div><button class="primary">Save course plan</button></form><section class="card"><h2>CO–PO Mapping template</h2><p>Illustrative only; replace with approved program outcomes and institutional scale.</p><table><tr><th>CO</th><th>PO1</th><th>PO2</th><th>PO3</th></tr><tr><td>CO1</td><td>3</td><td>2</td><td>—</td></tr><tr><td>CO2</td><td>2</td><td>3</td><td>2</td></tr></table></section></main></body></html>

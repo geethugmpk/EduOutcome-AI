@@ -1,0 +1,24 @@
+*{box-sizing:border-box}:root{--bg:#f0fdf4;--ink:#172033;--muted:#64748b;--line:#e2e8f0;--brand:#15803d;--soft:#dcfce7}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}header{background:#052e16;color:white;padding:17px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.brand{font-size:1.15rem;font-weight:800;color:#fff;text-decoration:none}.brand small{display:block;color:#cbd5e1;font-weight:400;font-size:.8rem}header form{display:flex;gap:8px;align-items:center}header label{color:#e2e8f0}select,input,textarea{font:inherit;padding:10px;border:1px solid #cbd5e1;border-radius:9px;width:100%;background:white}header select{width:auto;min-width:200px}.layout{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:calc(100vh - 70px)}nav{background:#fff;padding:14px 10px;border-right:1px solid var(--line)}nav a{display:block;padding:10px;border-radius:8px;text-decoration:none;color:#334155}nav a:hover{background:var(--soft);color:var(--brand)}main{padding:26px;max-width:1450px;width:100%;margin:auto}.standalone{max-width:950px}.eyebrow{color:var(--brand);font-weight:800;letter-spacing:.12em;font-size:.75rem}.muted{color:var(--muted)}h1{font-size:1.8rem;margin:0 0 10px}h2{font-size:1.15rem}.pill{background:var(--soft);color:var(--brand);border-radius:999px;padding:4px 9px;font-size:.8rem}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0}.stats section,.card{background:white;border:1px solid var(--line);border-radius:14px;padding:17px;margin:12px 0}.stats span{display:block;color:var(--muted)}.stats strong{font-size:1.8rem}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.module{display:block;text-decoration:none;color:inherit}.module p{color:var(--muted)}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.full{grid-column:1/-1}label{display:block;font-weight:700;font-size:.85rem;margin:10px 0 5px}textarea{min-height:90px}button,.button{display:inline-block;cursor:pointer;font:inherit;text-decoration:none;border:1px solid var(--line);border-radius:9px;background:white;color:var(--ink);padding:9px 13px;margin:8px 6px 0 0}.primary{background:var(--brand)!important;color:#fff!important;border-color:var(--brand)!important}.notice{padding:13px 15px;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:10px;margin:16px 0}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:9px;border-bottom:1px solid var(--line)}th{background:#f8fafc}hr{border:0;border-top:1px solid var(--line)}@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:650px){.layout{grid-template-columns:1fr}nav{display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--line)}nav a{white-space:nowrap}main{padding:14px}.grid,.fields{grid-template-columns:1fr}.full{grid-column:auto}header{padding:14px}}
+
+
+/* EduOutcome AI purple theme and right-side navigation */
+:root{--bg:#faf7ff;--ink:#052e16;--muted:#64748b;--line:#dcfce7;--brand:#16a34a;--soft:#f0fdf4}
+body{background:radial-gradient(circle at 12% 0%,#dcfce7 0,transparent 30%),var(--bg);color:var(--ink)}
+header{background:linear-gradient(110deg,#052e16 0%,#166534 58%,#16a34a 100%);box-shadow:0 8px 28px #4c1d951c}
+.layout{grid-template-columns:minmax(0,1fr) 240px}
+.layout nav{grid-column:2;grid-row:1;border-right:0;border-left:1px solid var(--line);box-shadow:-5px 0 22px #4c1d9507}
+.layout main{grid-column:1;grid-row:1}
+nav a:hover{background:#f0fdf4;color:#15803d}
+.eyebrow{color:#16a34a}.pill{background:#f0fdf4;color:#15803d}
+.stats section,.card{border-color:#dcfce7;box-shadow:0 6px 22px #4c1d9508}
+button,.button{border-radius:10px}.primary{background:linear-gradient(115deg,#16a34a,#15803d)!important;border-color:#16a34a!important;box-shadow:0 7px 16px #16a34a2a}
+input:focus,select:focus,textarea:focus{outline:3px solid #16a34a20;border-color:#4ade80}
+th{background:#f0fdf4}
+@media(max-width:650px){.layout{grid-template-columns:1fr}.layout nav{grid-column:1;grid-row:1;border-left:0;border-bottom:1px solid var(--line);box-shadow:none}.layout main{grid-column:1;grid-row:2}}
+
+/* EduOutcome AI green theme overrides */
+:root{--bg:#f0fdf4;--ink:#143322;--muted:#64748b;--line:#d1fae5;--brand:#15803d;--soft:#dcfce7}
+body{background:var(--bg)}
+header{background:linear-gradient(110deg,#052e16,#166534 62%,#22c55e)!important}
+nav a:hover,nav a.active{background:#dcfce7!important;color:#166534!important}
+button.primary,.primary{background:#15803d!important;border-color:#15803d!important}
